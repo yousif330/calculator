@@ -29,6 +29,8 @@ function operate(a, b, operator) {
 }
 
 function calculate(arr) {
+  previousOperation();
+
   console.log(arr);
   let b = arr.pop();
   let op = arr.pop();
@@ -36,8 +38,21 @@ function calculate(arr) {
 
   displayed = operate(+a, +b, op);
   displayed = Math.round(displayed * 1000) / 1000;
-  arr.push("" + displayed);
+  displayed = "" + displayed;
+  arr.push(displayed);
   display.textContent = displayed;
+}
+
+function previousOperation() {
+  let prevArray = arr;
+  prevArray = prevArray.join(' ');
+  prev.textContent = prevArray;
+}
+
+function currentOperation() {
+  let currentArray = arr;
+  currentArray = currentArray.join(' ');
+  display.textContent = currentArray;
 }
 
 function isInteger(a) {
@@ -47,8 +62,10 @@ function isInteger(a) {
   return true;
 }
 
+const prev = document.querySelector(".prev");
+
 // to store and display the input of the user
-const display = document.querySelector(".display");
+const display = document.querySelector(".displayValue");
 let displayed;
 
 // array to store the operations before calculating
@@ -59,7 +76,7 @@ let arr = [];
 const numbers = document.querySelectorAll(".number");
 numbers.forEach(number => {
   number.addEventListener("click", () => {
-    if (isInteger(arr[arr.length - 1]) && arr.length !== 0) {
+    if (isInteger(arr[arr.length - 1]) && arr.length !== 0 && displayed !== 0) {
       displayed = arr.pop() + number.textContent;
     }
 
@@ -68,7 +85,7 @@ numbers.forEach(number => {
     }
 
     arr.push(displayed);
-    display.textContent = displayed;
+    currentOperation();
   });
 });
 
@@ -84,6 +101,7 @@ operators.forEach(operator => {
 
       if (operator.textContent !== '=') {
         arr.push(operator.textContent);
+        currentOperation();
       }
     }
 
@@ -91,7 +109,10 @@ operators.forEach(operator => {
       if (operator.textContent === '=') {
         alert("invalid format");
       }
-      else arr.push(operator.textContent);
+      else {
+        arr.push(operator.textContent);
+        currentOperation();
+      }
     }
   });
 });
@@ -104,13 +125,13 @@ sign.addEventListener("click", () => {
       displayed = displayed.slice(1);
       arr.pop();
       arr.push(displayed);
-      display.textContent = displayed;
+      currentOperation()
     }
     else {
       displayed = '-' + displayed;
       arr.pop();
       arr.push(displayed);
-      display.textContent = displayed;
+      currentOperation();
     }
   }
 });
@@ -122,7 +143,7 @@ point.addEventListener("click", () => {
     displayed = displayed + '.';
     arr.pop();
     arr.push(displayed);
-    display.textContent = displayed;
+    currentOperation();
   }
 });
 
@@ -132,7 +153,7 @@ precent.addEventListener("click", () => {
   displayed = +displayed / 100 + "";
   arr.pop();
   arr.push(displayed);
-  display.textContent = displayed;
+  currentOperation();
 });
 
 // add a clear button
@@ -142,7 +163,8 @@ clear.addEventListener("click", () => {
     arr.pop();
   }
   displayed = 0;
-  display.textContent = displayed;
+  prev.textContent = "";
+  currentOperation();
 });
 
 // add a hover effect
@@ -166,3 +188,25 @@ buttons.forEach(button => {
     }
   })
 });
+
+// add a delete button
+const deleteButton = document.querySelector(".delete");
+deleteButton.addEventListener("click", () => {
+  if (isInteger(arr[arr.length - 1])) {
+    if (displayed.length === 1) {
+      arr.pop();
+      displayed = 0;
+      currentOperation();
+    }
+    else {
+      displayed = displayed.slice(0, displayed.length - 1);
+      arr.pop();
+      arr.push(displayed);
+      currentOperation();
+    }
+  }
+
+  else {
+    arr.pop();
+  }
+})

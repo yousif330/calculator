@@ -1,7 +1,7 @@
 * {
   margin: 0px;
   padding: 0px;
-  font-family: sans-serif;
+  font-family: "Roboto";
 }
 
 body {
@@ -27,13 +27,24 @@ body {
   height: 100px;
   align-self: center;
   margin-top: 10px;
-  color: white;
   display: flex;
-  align-items: center;
-  justify-content: end;
-  font-size: 32px;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
   padding: 10px;
   box-sizing: border-box;
+}
+
+.displayValue {
+  color: white;
+  font-size: 32px;
+}
+
+.prev {
+  height: 20px;
+  color: white;
+  margin-bottom: 10px;
+
 }
 
 hr {
@@ -64,12 +75,6 @@ hr {
   border-radius: 10px;
 }
 
-.point,
-.zero {
-  width: 60px;
-  flex: none;
-}
-
 .number,
 .point {
   background-color: rgb(33, 33, 33);
@@ -78,7 +83,8 @@ hr {
 .operator,
 .sign,
 .clear,
-.precent {
+.precent,
+.delete {
   background-color: rgb(73, 73, 73);
   color: rgb(84, 255, 84);
   font-weight: bold;
@@ -86,6 +92,15 @@ hr {
 
 .clear {
   color: rgb(255, 68, 26);
+}
+
+.delete {
+  color: rgb(255, 68, 26);
+  font-weight: 400;
+}
+
+.sign {
+  font-weight: 400;
 }
 
 .equal {

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +11,22 @@
 </head>
 <body>
   <div class="container">
-    <div class="display">0</div>
+    <div class="display">
+      <div class="prev"></div>
+      <div class="displayValue"></div>
+    </div>
     <hr>
     <div class="buttons">
       <div class="button clear">C</div>
-      <div class="button precent">%</div>
+      <div class="button delete">del</div>
       <div class="button sign">+/-</div>
       <div class="button operator">/</div>
-
+      
       <div class="button number">7</div>
       <div class="button number">8</div>
       <div class="button number">9</div>
       <div class="button operator">*</div>
-
+      
       <div class="button number">4</div>
       <div class="button number">5</div>
       <div class="button number">6</div>
@@ -30,10 +36,11 @@
       <div class="button number">2</div>
       <div class="button number">3</div>
       <div class="button operator">+</div>
-
+      
       <div class="button number zero">0</div>
       <div class="button point">.</div>
       <div class="button operator equal" id="equal">=</div>
+      <div class="button precent">%</div>
     </div>
   </div>
   <script src="./script.js"></script>
