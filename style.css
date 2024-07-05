@@ -1,0 +1,93 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 300px;
+  height: 480px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.display {
+  width: 280px;
+  height: 100px;
+  align-self: center;
+  margin-top: 10px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  font-size: 42px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+hr {
+  margin: 10px 0px;
+  width: 260px;
+  align-self: center;
+  border-color: gray;
+}
+
+.buttons {
+  width: 280px;
+  flex: auto;
+  align-self: center;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.button {
+  flex: 1 0 55px;
+  height: 55px;
+  margin: 5px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  border-radius: 10px;
+}
+
+.point,
+#zero {
+  width: 60px;
+  flex: none;
+}
+
+.number,
+.point {
+  background-color: rgb(33, 33, 33);
+}
+
+.operate,
+.sign,
+.clear {
+  background-color: rgb(73, 73, 73);
+  color: rgb(84, 255, 84);
+  font-weight: bold;
+}
+
+.clear {
+  color: rgb(255, 68, 26);
+}
+
+#equal {
+  color: white;
+  background-color: rgb(0, 179, 0);
+}
+
