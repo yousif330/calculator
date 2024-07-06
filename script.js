@@ -31,16 +31,15 @@ function operate(a, b, operator) {
 function calculate(arr) {
   previousOperation();
 
-  console.log(arr);
   let b = arr.pop();
   let op = arr.pop();
   let a = arr.pop();
 
   displayed = operate(+a, +b, op);
-  displayed = Math.round(displayed * 1000) / 1000;
+  displayed = Math.round(displayed * 10000) / 10000;
   displayed = "" + displayed;
   arr.push(displayed);
-  display.textContent = displayed;
+  currentOperation();
 }
 
 function previousOperation() {
@@ -151,6 +150,7 @@ point.addEventListener("click", () => {
 const precent = document.querySelector(".precent");
 precent.addEventListener("click", () => {
   displayed = +displayed / 100 + "";
+  displayed = Math.round(displayed * 10000) / 10000;
   arr.pop();
   arr.push(displayed);
   currentOperation();
@@ -208,5 +208,6 @@ deleteButton.addEventListener("click", () => {
 
   else {
     arr.pop();
+    currentOperation();
   }
 })
