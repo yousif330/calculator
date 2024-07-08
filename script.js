@@ -149,8 +149,9 @@ point.addEventListener("click", () => {
 // add a precent operator
 const precent = document.querySelector(".precent");
 precent.addEventListener("click", () => {
-  displayed = +displayed / 100 + "";
+  displayed = +displayed / 100;
   displayed = Math.round(displayed * 10000) / 10000;
+  displayed = displayed + "";
   arr.pop();
   arr.push(displayed);
   currentOperation();
